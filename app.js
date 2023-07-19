@@ -11,7 +11,7 @@ app.set("view engine", "hbs")
 
 app.use(express.urlencoded({extended: true}))
 app.use(methodOverride("_method"))
-app.ues(routes)
+app.use(routes)
 
 app.listen(port, () => {
   console.log(`Express is listening on http://localhost:${port}`)
