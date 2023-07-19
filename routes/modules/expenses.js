@@ -1,6 +1,13 @@
 const express = require('express')
 const router = express.Router()
 
+
+// search
+router.get('/search', (req, res) => {
+
+})
+
+
 // create
 router.post('/', (req, res) => {
 
