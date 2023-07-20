@@ -2,13 +2,17 @@ const express = require('express')
 const router = express.Router()
 
 
-// search
-router.get('/search', (req, res) => {
+// filter
+router.get('/filter', (req, res) => {
 
 })
 
 
 // create
+router.get('/create', (req, res) => {
+
+})
+
 router.post('/', (req, res) => {
 
 })

@@ -1,1 +1,109 @@
-<h1>hi</h1>
+<head>
+  <title>Bootstrap Gray-White Striped List Design</title>
+  <style>
+    .striped-list li:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+
+<div class="container">
+
+  <!-- filter bar -->
+  <div class="container search-bar mt-3">
+    <div class="search-bar-outer">
+      <div class="search-bar-inner">
+        <form action="/expenses/filter">
+          <select name="category" class="form-select">
+            <option value="" disabled selected>選擇篩選類別</option>
+            <option {{#if (eq category "所有類別" )}}selected{{/if}} value="所有類別">所有類別</option>
+            <option {{#if (eq category "家居物業" )}}selected{{/if}} value="家居物業">家居物業</option>
+            <option {{#if (eq category "交通出行" )}}selected{{/if}} value="交通出行">交通出行</option>
+            <option {{#if (eq category "休閒娛樂" )}}selected{{/if}} value="休閒娛樂">休閒娛樂</option>
+            <option {{#if (eq category "餐飲食品" )}}selected{{/if}} value="餐飲食品">餐飲食品</option>
+            <option {{#if (eq category "其他" )}}selected{{/if}} value="其他">其他</option>
+          </select>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  {{!-- total amount --}}
+  <div class="container mt-3 row col-9">
+    <h4 class="col" style="color:rgb(255, 98, 0); margin-right: 100px;">總金額： </h4>
+    <h1 class=" d-flex col mt-3 justify-content-end flex-fill" style=" color:rgb(255, 98, 0); text-end">{{totalAmount}}25260</h1>
+  </div>
+
+  {{!-- expenses list --}}
+{{!-- {{#each expenses}}  --}}
+<div class="container mt-3">
+  <div>
+  <ul class="list-group striped-list">
+    <li class="list-group-item">
+      <div class="row align-items-center">
+        <div class="col-1" style="text-align-last: end">
+          <i class="fa-solid fa-house"></i>
+          {{this.icon}}
+        </div>
+        <div class="col justify-content-start">
+          <div>{{this.icon}}<h5 style="color:rgba(50, 28, 11, 0.76);">餐費</h5>
+          </div>
+          <div>{{this.icon}}<h5 style="color:rgba(50, 28, 11, 0.76);">2023/04/12</h5>
+          </div>
+        </div>
+        <div class="col justify-content-end text-end">
+          <h4 style="color:rgb(103, 47, 8);">100</h4>
+          <h5 style="color:rgb(9, 103, 10);">{{this.icon}}</h5>
+        </div>
+      
+        <div class="col d-flex justify-content-end align-items-center">
+          <a href="/expenses/{{this._id}}/edit" style="text-decoration: none">
+            <h5 style="color:rgb(9, 103, 10);">修改</h5>
+          </a>
+          <form action="/expenses/{{this._id}}?_method=DELETE" method="POST" style="display: inline" class="m-2">
+            <button type="submit" class="btn">
+              <h5 style="color:rgb(223, 19, 19);">刪除</h5>
+            </button>
+          </form>
+        </div>
+    </li>
+
+    <li class="list-group-item">
+      <div class="row align-items-center">
+        <div class="col-1" style="text-align-last: end">
+          <i class="fa-solid fa-house"></i>
+          {{this.icon}}
+        </div>
+        <div class="col justify-content-start">
+          <div>{{this.icon}}<h5 style="color:rgba(50, 28, 11, 0.76);">餐費</h5>
+          </div>
+          <div>{{this.icon}}<h5 style="color:rgba(50, 28, 11, 0.76);">2023/04/12</h5>
+          </div>
+        </div>
+        <div class="col justify-content-end text-end">
+          <h4 style="color:rgb(103, 47, 8);">100</h4>
+          <h5 style="color:rgb(9, 103, 10);">{{this.icon}}</h5>
+        </div>
+        <div class="col d-flex justify-content-end align-items-center">
+          <a href="/expenses/{{this._id}}/edit" style="text-decoration: none">
+            <h5 style="color:rgb(9, 103, 10);">修改</h5>
+          </a>
+          <form action="/expenses/{{this._id}}?_method=DELETE" method="POST" style="display: inline" class="m-2">
+            <button type="submit" class="btn">
+              <h5 style="color:rgb(223, 19, 19);">刪除</h5>
+            </button>
+          </form>
+        </div>
+      </div>
+    </li>
+
+
+  
+{{!-- {{/each}} --}}
+
+  {{!-- create button --}}
+  <div class="d-flex justify-content-center mt-3">
+    <a href="/expenses/filter" class="btn  btn-warning">
+      <h4 style="color:rgb(157, 0, 255)">新增支出</h4>
+    </a>
+  </div>
