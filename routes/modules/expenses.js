@@ -19,7 +19,7 @@ router.post('/', (req, res) => {
 
 // edit
 router.get('/:id/edit', (req, res) => {
-
+  res.render("edit")
 })
 
 router.put('/:id', (req, res) => {
