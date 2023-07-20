@@ -5,14 +5,7 @@ if (process.env.NODE_ENV !== 'production') {
 const db = require('../../config/mongoose')
 
 const Category = require('../category.js')
-
-const categoryList = [
-  { name: "家居物業" },
-  { name: "交通出行" },
-  { name: "休閒娛樂" },
-  { name: "餐飲食品" },
-  { name: "其他" },
-]
+const categoryList = require('../seeds/seedData/categories.json')
 
 db.once("open", async() => {
   try {
