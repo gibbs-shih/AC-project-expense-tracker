@@ -10,7 +10,7 @@ router.get('/filter', (req, res) => {
 
 // create
 router.get('/create', (req, res) => {
-
+  res.render("new")
 })
 
 router.post('/', (req, res) => {
