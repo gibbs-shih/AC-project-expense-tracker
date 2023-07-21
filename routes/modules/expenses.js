@@ -6,8 +6,35 @@ const Category = require('../../models/category')
 const User = require('../../models/user')
 
 // filter
-router.get('/filter', (req, res) => {
-
+router.get('/filter', async (req, res) => {
+  try {
+    const filter = req.query.category
+    let records = {}
+    let recordList = []
+    if (filter === "所有類別") {
+      const categories = await Category.find().lean()
+      records = await Record.find().lean()
+      recordList = records.map(record => ({
+        ...record,
+        icon: categories.find(category =>
+          String(category._id) === String(record.categoryId)
+        )?.icon
+      }))
+    } else {
+      const categoryInfo = await Category.findOne({ name: filter }).lean()
+      records = await Record.find({ categoryId: categoryInfo._id }).lean()
+      console.log('records',records)
+      recordList = records.map(record => ({
+        ...record,
+        icon: categoryInfo.icon
+      }))
+    }
+    let totalAmount = 0
+    records.forEach(record => totalAmount += Number(record.amount))
+    res.render('index', {recordList, totalAmount, filter})
+  } catch (error) {
+    console.log(error)
+  }
 })
 
 
