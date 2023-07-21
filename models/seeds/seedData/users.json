@@ -1,10 +1,14 @@
 [
   {
     "name": "廣志",
-    "item": [0,1,2,4]
+    "item": [0,1,2,4],
+    "email": "user1@example.com",
+    "password": "1234"
   },
   {
     "name": "小新",
-    "item": [3]
+    "item": [3],
+    "email": "user2@example.com",
+    "password": "5678"
   }
 ]
