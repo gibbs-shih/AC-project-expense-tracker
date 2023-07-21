@@ -31,75 +31,48 @@
   {{!-- total amount --}}
   <div class="container mt-3 row col-9">
     <h4 class="col" style="color:rgb(255, 98, 0); margin-right: 100px;">總金額： </h4>
-    <h1 class=" d-flex col mt-3 justify-content-end flex-fill" style=" color:rgb(255, 98, 0); text-end">{{totalAmount}}25260</h1>
+    <h1 class=" d-flex col mt-3 justify-content-end flex-fill" style=" color:rgb(255, 98, 0); text-end">{{totalAmount}}</h1>
   </div>
 
-  {{!-- expenses list --}}
-{{!-- {{#each expenses}}  --}}
+  {{!-- records list --}}
 <div class="container mt-3">
-  <div>
   <ul class="list-group striped-list">
-    <li class="list-group-item">
-      <div class="row align-items-center">
-        <div class="col-1" style="text-align-last: end">
-          <i class="fa-solid fa-house"></i>
-          {{this.icon}}
-        </div>
-        <div class="col justify-content-start">
-          <div>{{this.icon}}<h5 style="color:rgba(50, 28, 11, 0.76);">餐費</h5>
-          </div>
-          <div>{{this.icon}}<h5 style="color:rgba(50, 28, 11, 0.76);">2023/04/12</h5>
-          </div>
-        </div>
-        <div class="col justify-content-end text-end">
-          <h4 style="color:rgb(103, 47, 8);">100</h4>
-          <h5 style="color:rgb(9, 103, 10);">{{this.icon}}</h5>
-        </div>
-      
-        <div class="col d-flex justify-content-end align-items-center">
-          <a href="/expenses/{{this._id}}/edit" style="text-decoration: none">
-            <h5 style="color:rgb(9, 103, 10);">修改</h5>
-          </a>
-          <form action="/expenses/{{this._id}}?_method=DELETE" method="POST" style="display: inline" class="m-2">
-            <button type="submit" class="btn">
-              <h5 style="color:rgb(223, 19, 19);">刪除</h5>
-            </button>
-          </form>
-        </div>
-    </li>
 
-    <li class="list-group-item">
-      <div class="row align-items-center">
-        <div class="col-1" style="text-align-last: end">
-          <i class="fa-solid fa-house"></i>
-          {{this.icon}}
-        </div>
-        <div class="col justify-content-start">
-          <div>{{this.icon}}<h5 style="color:rgba(50, 28, 11, 0.76);">餐費</h5>
+    {{#each recordList}}
+      <li class="list-group-item">
+        <div class="row align-items-center">
+          <div class="col-1" style="text-align-last: end">
+            <i class="{{this.icon}}"></i>
           </div>
-          <div>{{this.icon}}<h5 style="color:rgba(50, 28, 11, 0.76);">2023/04/12</h5>
+
+          <div class="col justify-content-start">
+            <div>
+              <h5 style="color:rgba(50, 28, 11, 0.76);">{{this.name}}</h5>
+            </div>
+            <div>
+              <h5 style="color:rgba(50, 28, 11, 0.76);">{{this.date}}</h5>
+            </div>
+          </div>
+
+          <div class="col justify-content-end text-end">
+            <h4 style="color:rgb(103, 47, 8);">{{this.amount}}</h4>
+          </div>
+        
+          <div class="col d-flex justify-content-end align-items-center">
+            <a href="/expenses/{{this._id}}/edit" style="text-decoration: none">
+              <h5 style="color:rgb(9, 103, 10);">修改</h5>
+            </a>
+            <form action="/expenses/{{this._id}}?_method=DELETE" method="POST" style="display: inline" class="m-2">
+              <button type="submit" class="btn">
+                <h5 style="color:rgb(223, 19, 19);">刪除</h5>
+              </button>
+            </form>
           </div>
         </div>
-        <div class="col justify-content-end text-end">
-          <h4 style="color:rgb(103, 47, 8);">100</h4>
-          <h5 style="color:rgb(9, 103, 10);">{{this.icon}}</h5>
-        </div>
-        <div class="col d-flex justify-content-end align-items-center">
-          <a href="/expenses/{{this._id}}/edit" style="text-decoration: none">
-            <h5 style="color:rgb(9, 103, 10);">修改</h5>
-          </a>
-          <form action="/expenses/{{this._id}}?_method=DELETE" method="POST" style="display: inline" class="m-2">
-            <button type="submit" class="btn">
-              <h5 style="color:rgb(223, 19, 19);">刪除</h5>
-            </button>
-          </form>
-        </div>
-      </div>
-    </li>
-
-
-  
-{{!-- {{/each}} --}}
+      </li>
+    {{/each}}
+  </ul>
+</div>
 
   {{!-- create button --}}
   <div class="d-flex justify-content-center mt-3">
