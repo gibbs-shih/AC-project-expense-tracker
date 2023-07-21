@@ -5,6 +5,8 @@ const db = require('./config/mongoose')
 const routes = require('./routes/index')
 const methodOverride = require('method-override')
 const session = require('express-session')
+const usePassport = require('./config/passport')
+const passport = require('./config/passport')
 
 const app = express()
 app.engine("hbs", exphbs({ 
@@ -26,6 +28,8 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 }))
+
+passport(app)
 app.use(routes)
 
 app.listen(port, () => {
