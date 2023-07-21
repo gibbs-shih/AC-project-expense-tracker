@@ -9,11 +9,12 @@ const User = require('../../models/user')
 router.get('/filter', async (req, res) => {
   try {
     const filter = req.query.category
+    const userId = req.user._id
     let records = {}
     let recordList = []
     if (filter === "所有類別") {
       const categories = await Category.find().lean()
-      records = await Record.find().lean()
+      records = await Record.find({ userId }).lean()
       recordList = records.map(record => ({
         ...record,
         icon: categories.find(category =>
@@ -22,7 +23,7 @@ router.get('/filter', async (req, res) => {
       }))
     } else {
       const categoryInfo = await Category.findOne({ name: filter }).lean()
-      records = await Record.find({ categoryId: categoryInfo._id }).lean()
+      records = await Record.find({ categoryId: categoryInfo._id, userId }).lean()
       recordList = records.map(record => ({
         ...record,
         icon: categoryInfo.icon
@@ -47,9 +48,8 @@ router.post('/', async (req, res) => {
     const {name, date, category, amount} = req.body
     const categoryInfo = await Category.findOne({name: category}).lean()
     const categoryId = categoryInfo._id
-    const user = await User.find().lean() //test
-    const testUserId = user[0]._id  //test
-    await Record.create({ name, date, amount, userId: testUserId, categoryId})
+    const userId = req.user._id
+    await Record.create({ name, date, amount, userId, categoryId})
     res.redirect("/")
   } catch (error) {
     console.log(error)
@@ -59,8 +59,9 @@ router.post('/', async (req, res) => {
 // edit
 router.get('/:id/edit', async (req, res) => {
   try {
+    const userId = req.user._id
     const recordId = req.params.id
-    const record = await Record.findOne({_id: recordId}).lean()
+    const record = await Record.findOne({_id: recordId, userId}).lean()
     const category = await Category.findOne({_id: record.categoryId}).lean()
     res.render("edit", {record, category})
   } catch (error) {
@@ -70,9 +71,10 @@ router.get('/:id/edit', async (req, res) => {
 
 router.put('/:id', async (req, res) => {
   try {
+    const userId = req.user._id
     const { name, date, category, amount } = req.body
     const categoryInfo = await Category.findOne({ name: category }).lean()
-    await Record.findByIdAndUpdate(req.params.id, {
+    await Record.findOneAndUpdate({_id:req.params.id, userId}, {
       name: name,
       date: date,
       categoryId: categoryInfo._id,
@@ -87,8 +89,9 @@ router.put('/:id', async (req, res) => {
 // delete
 router.delete('/:id', async (req, res) => {
   try {
+    const userId = req.user._id
     const recordId = req.params.id
-    await Record.findOne({ _id: recordId }).remove()
+    await Record.findOne({ _id: recordId, userId }).remove()
     res.redirect('/')
   } catch (error) {
     console.log(error)

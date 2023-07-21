@@ -7,7 +7,8 @@ const Record = require('../../models/record')
 router.get('/', async (req, res) => {
   const filter = "所有類別"
   const categories = await Category.find().lean()
-  const records = await Record.find().lean().sort({ date: "asc" })
+  const userId = req.user._id
+  const records = await Record.find({ userId }).lean().sort({ date: "asc" })
   let totalAmount = 0
   records.forEach(record => totalAmount += Number(record.amount))
   const recordList = records.map(record => ({
