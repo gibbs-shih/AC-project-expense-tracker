@@ -23,7 +23,6 @@ router.get('/filter', async (req, res) => {
     } else {
       const categoryInfo = await Category.findOne({ name: filter }).lean()
       records = await Record.find({ categoryId: categoryInfo._id }).lean()
-      console.log('records',records)
       recordList = records.map(record => ({
         ...record,
         icon: categoryInfo.icon

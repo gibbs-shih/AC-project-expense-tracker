@@ -13,11 +13,17 @@
   <header>
     <nav class="navbar navbar-dark justify-content-between" style="padding: 8px 16px; background-color: #e95420;">
       <a class="navbar-brand ms-5" href="/">
-        <h2>家庭記帳本</h2>
+        <h2>{{#if isAuthenticated}} {{user.name}} 的 {{/if}}家庭記帳本</h2>
       </a>
-      <a href="/users/logout" class="btn btn-outline-light me-5">
-        <h2>登出</h2>
-      </a>
+      {{#if isAuthenticated}}
+        <a href="/users/logout" class="btn btn-outline-light me-5">
+          <h2>登出</h2>
+        </a>
+      {{else}}
+        <a href="/users/login" class="btn btn-outline-light me-5">
+          <h2>登入</h2>
+        </a>
+      {{/if}}
     </nav>
   </header>
 
