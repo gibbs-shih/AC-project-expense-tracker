@@ -31,12 +31,31 @@ router.post('/', async (req, res) => {
 })
 
 // edit
-router.get('/:id/edit', (req, res) => {
-  res.render("edit")
+router.get('/:id/edit', async (req, res) => {
+  try {
+    const recordId = req.params.id
+    const record = await Record.findOne({_id: recordId}).lean()
+    const category = await Category.findOne({_id: record.categoryId}).lean()
+    res.render("edit", {record, category})
+  } catch (error) {
+    console.log(error)
+  } 
 })
 
-router.put('/:id', (req, res) => {
-
+router.put('/:id', async (req, res) => {
+  try {
+    const { name, date, category, amount } = req.body
+    const categoryInfo = await Category.findOne({ name: category }).lean()
+    await Record.findByIdAndUpdate(req.params.id, {
+      name: name,
+      date: date,
+      categoryId: categoryInfo._id,
+      amount: amount
+    })
+    res.redirect('/')
+  } catch (error) {
+    console.log(error)
+  }
 })
 
 // delete
