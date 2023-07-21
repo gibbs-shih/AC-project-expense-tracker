@@ -15,7 +15,6 @@ router.get('/', async (req, res) => {
       String(category._id) === String(record.categoryId)
       )?.icon
     }))
-  console.log(recordList)
   res.render('index', { recordList, totalAmount })
   })
 
