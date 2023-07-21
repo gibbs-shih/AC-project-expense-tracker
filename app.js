@@ -4,6 +4,7 @@ const port = 3000
 const db = require('./config/mongoose')
 const routes = require('./routes/index')
 const methodOverride = require('method-override')
+const session = require('express-session')
 
 const app = express()
 app.engine("hbs", exphbs({ 
@@ -20,6 +21,11 @@ app.set("view engine", "hbs")
 
 app.use(express.urlencoded({extended: true}))
 app.use(methodOverride("_method"))
+app.use(session({
+  secret: 'ThisIsMySecret',
+  resave: false,
+  saveUninitialized: true
+}))
 app.use(routes)
 
 app.listen(port, () => {
