@@ -20,12 +20,17 @@ app.engine("hbs", exphbs({
     }
   }
 }))
+
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
+
 app.set("view engine", "hbs")
 
 app.use(express.urlencoded({extended: true}))
 app.use(methodOverride("_method"))
 app.use(session({
-  secret: 'ThisIsMySecret',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true
 }))
