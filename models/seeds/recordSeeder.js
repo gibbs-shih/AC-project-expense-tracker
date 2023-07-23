@@ -33,7 +33,7 @@ db.once("open", async () => {
         await Record.create(record)
       }
     }
-    console.log('User and Record Seeders Generated!!!')
+    console.log('User and Record Seeders Generated!!!!')
     process.exit()
   } catch (error) {
     console.log(error)
