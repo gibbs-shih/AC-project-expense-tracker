@@ -8,14 +8,13 @@
 
 畫面預覽：
 
-![登入](https://github.com/gibbs-shih/AC-project-expense-tracker/example_photos/登入.png)
-![註冊](https://github.com/gibbs-shih/AC-project-expense-tracker/example_photos/註冊.png)
-![提示訊息](https://github.com/gibbs-shih/AC-project-expense-tracker/example_photos/提示訊息.png)
-![首頁](https://github.com/gibbs-shih/AC-project-expense-tracker/example_photos/首頁.png)
-![新增](https://github.com/gibbs-shih/AC-project-expense-tracker/example_photos/新增.png)
-![編輯](https://github.com/gibbs-shih/AC-project-expense-tracker/example_photos/編輯.png)
-![篩選](https://github.com/gibbs-shih/AC-project-expense-tracker/example_photos/篩選.png)
-
+![登入](https://github.com/gibbs-shih/AC-project-expense-tracker/blob/main/example_photos/登入.png)
+![註冊](https://github.com/gibbs-shih/AC-project-expense-tracker/blob/main/example_photos/註冊.png)
+![提示訊息](https://github.com/gibbs-shih/AC-project-expense-tracker/blob/main/example_photos/提示訊息.png)
+![首頁](https://github.com/gibbs-shih/AC-project-expense-tracker/blob/main/example_photos/首頁.png)
+![新增](https://github.com/gibbs-shih/AC-project-expense-tracker/blob/main/example_photos/新增.png)
+![編輯](https://github.com/gibbs-shih/AC-project-expense-tracker/blob/main/example_photos/編輯.png)
+![篩選](https://github.com/gibbs-shih/AC-project-expense-tracker/blob/main/example_photos/篩選.png)
 
 ## 功能
 - 設置登入、註冊頁面，另可以使用Facebook進行登入
