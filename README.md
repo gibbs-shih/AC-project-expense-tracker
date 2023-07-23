@@ -8,13 +8,13 @@
 
 畫面預覽：
 
-![登入](example photos/登入.png)
-![註冊](example photos/註冊.png)
-![提示訊息](example photos/提示訊息.png)
-![首頁](example photos/首頁.png)
-![新增](example photos/新增.png)
-![編輯](example photos/編輯.png)
-![篩選](example photos/篩選.png)
+![登入](https://github.com/gibbs-shih/AC-project-expense-tracker/example_photos/登入.png)
+![註冊](https://github.com/gibbs-shih/AC-project-expense-tracker/example_photos/註冊.png)
+![提示訊息](https://github.com/gibbs-shih/AC-project-expense-tracker/example_photos/提示訊息.png)
+![首頁](https://github.com/gibbs-shih/AC-project-expense-tracker/example_photos/首頁.png)
+![新增](https://github.com/gibbs-shih/AC-project-expense-tracker/example_photos/新增.png)
+![編輯](https://github.com/gibbs-shih/AC-project-expense-tracker/example_photos/編輯.png)
+![篩選](https://github.com/gibbs-shih/AC-project-expense-tracker/example_photos/篩選.png)
 
 
 ## 功能
